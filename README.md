@@ -12,7 +12,9 @@
 
 <img src='./image/step3.png'>
 
-### 1.3:コード.gs ファイルにコードを貼り付ける
+### 1.3:コード.gs ファイルに下記のコードを貼り付ける
+
+[techreis/google-apps-script/app.js](https://github.com/techreis/neomobi-aggregater/blob/master/src/google-apps-script/app.js)
 
 <img src='./image/step4.png'>
 
@@ -64,7 +66,9 @@
 
 <img src='./image/step15.png'>
 
-### 2.3 コードを貼り付ける
+### 2.3 下記のコードを貼り付ける
+
+[techreis/tampermonkey/app.js](https://github.com/techreis/neomobi-aggregater/blob/master/src/tampermonkey/app.js)
 
 <img src='./image/step16.png'>
 
