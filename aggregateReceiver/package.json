@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "tslint_ini": "tslint --init"
+    "login": "clasp login",
+    "push": "clasp push",
+    "deploy": "clasp deploy"
   },
   "devDependencies": {
     "@google/clasp": "^2.3.0",
