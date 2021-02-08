@@ -10,7 +10,7 @@ SBI ネオモバイル集計スクリプトは SBI ネオモバイルで作成�
 
 ## 2. 構成
 
- 本スクリプトは２つのスクリプトで構成されている。
+本スクリプトは２つのスクリプトで構成されている。
 
 - aggregateSender
   - 技術：Chrome Extensions
@@ -19,18 +19,18 @@ SBI ネオモバイル集計スクリプトは SBI ネオモバイルで作成�
   - Google Apps Script
   - aggregateSender から送られてきた情報を整形し、スプレッドシートに表形式で出力します。
 
-## 3.  使い方
+## 3. 使い方
 
 ### 3.1. SBI ネオモバイルの[ポートフォリオ画面](https://trade.sbineomobile.co.jp/account/portfolio)にアクセスします
 
-### 3.2. NORMAL ボタンを選択します
+### 3.2. NORMAL ボタンを選択します
 
 NORMAL ボタンを選択すると画面が開発モードに切り替わります。
 <img src='./image/use1.png'>
 
-### 3.3. START ボタンを選択します
+### 3.3. START ボタンを選択します
 
-START ボタンを選択すると集計が開始されます。
+START ボタンを選択すると集計が開始されます。
 <img src='./image/use2.png'>
 
 ## 4. スクリプトのセットアップ<span style="color:red">※編集中</span>
@@ -52,7 +52,7 @@ START ボタンを選択すると集計が開始されます。
 
 #### 4.1.3 google clasp ログイン
 
-question npm username: <あなたの  任意のユーザ名>
+question npm username: <あなたの 任意のユーザ名>
 question npm email: <あなたの gmail>
 `yarn login`
 
