@@ -1,91 +1,123 @@
 # neomobi-aggregater
 
-ネオモバイルの集計スクリプト
+SBI ネオモバイル集計スクリプト
 
-## 1. スプレッドシートの設定
+## 1. はじめに
 
-### 1.1:スプレッドシートを開く
+SBI ネオモバイル集計スクリプトは SBI ネオモバイルで作成したポートフォリオの情報を集計し、スプレッドシートにまとめるスクリプトです。
+リバランス、リアロケーションをする際や株価売買判断の際、
+情報を一覧して判断するために作成しました。
 
-<img src='./image/step2.png'>
+## 2. 構成
 
-### 1.2:ツール → スクリプトエディタ
+ 本スクリプトは２つのスクリプトで構成されている。
 
-<img src='./image/step3.png'>
+- aggregateSender
+  - 技術：Chrome Extensions
+  - 説明：SBI ネオモバイルから情報を収集しスプレッドシートに送信します。
+- aggregateReceiver
+  - Google Apps Script
+  - aggregateSender から送られてきた情報を整形し、スプレッドシートに表形式で出力します。
 
-### 1.3:コード.gs ファイルに下記のコードを貼り付ける
+## 3.  使い方
 
-[techreis/google-apps-script/app.js](https://github.com/techreis/neomobi-aggregater/blob/master/src/google-apps-script/app.js)
+### 3.1. SBI ネオモバイルの[ポートフォリオ画面](https://trade.sbineomobile.co.jp/account/portfolio)にアクセスします
 
-<img src='./image/step4.png'>
+### 3.2. NORMAL ボタンを選択します
 
-### 1.4:保存する。プロジェクトの名前は適当(例では sample とする)
+NORMAL ボタンを選択すると画面が開発モードに切り替わります。
+<img src='./image/use1.png'>
 
-<img src='./image/step5.png'>
+### 3.3. START ボタンを選択します
 
-### 1.5:ツール → ウェブアプリケーションとして導入...
+START ボタンを選択すると集計が開始されます。
+<img src='./image/use2.png'>
 
-<img src='./image/step6.png'>
+## 4. スクリプトのセットアップ<span style="color:red">※編集中</span>
 
-### 1.6:Deploy を押す
+あらかじめ本リポジトリを git clone しておきます。
+`git clone git@github.com:techreis/neomobi-aggregater.git`
 
-<img src='./image/step7.png'>
+### 4.1 aggregateReceiver のセットアップ
 
-### 1.7:「許可を確認」を選択する
+#### 4.1.0 事前準備
 
-<img src='./image/step8.png'>
+#### 4.1.1 aggregateReceiver 直下に移動
 
-### 1.8:「許可を確認」を選択する
+`cd /neomobi-aggregater/aggregateReceiver`
 
-<img src='./image/step9.png'>
+#### 4.1.2 ライブラリのインストール
 
-### 1.9:「詳細」を選択する
+`yarn install`
 
-<img src='./image/step10.png'>
+#### 4.1.3 google clasp ログイン
 
-### 1.10:「<プロジェクト名>(安全ではないページ)に移動」を選択する
+question npm username: <あなたの  任意のユーザ名>
+question npm email: <あなたの gmail>
+`yarn login`
+
+#### 4.1.4 Google Apps Script にソースコードをアップロード
+
+`yarn push`
+
+#### 4.1.5 Google アプリケーションデプロイ
+
+`yarn deploy`
+
+#### 4.1.6 アプリケーションの認証
+
+1. ユーザ認証する
+   <img src='./image/step9.png'>
+
+2. 「許可を確認」を選択する
+   <img src='./image/step8.png'>
+
+3. 「詳細」を選択する
+   <img src='./image/step10.png'>
+
+4. 「<プロジェクト名>(安全ではないページ)に移動」を選択する
 
 <img src='./image/step11.png'>
 
-### 1.11:「許可」を選択する
+5. 「許可」を選択する
+   <img src='./image/step12.png'>
 
-<img src='./image/step12.png'>
-
-### 1.12:Current web app URL の値を控えておく
+#### 4.1.7 web app URL の値を控えておく
 
 <img src='./image/step13.png'>
 
-## 2. Tampermonkey の設定
+### 4.2. aggregateSender のセットアップ
 
-### 2.1 Tampermonkey のインストール
+#### 4.2.1 aggregateSender 直下に移動
 
-[Tampermonkey へアクセス](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=ja)
+`cd /neomobi-aggregater/aggregateSender`
 
-### 2.2 「新規スクリプトを追加...」を選択する
+#### 4.2.2 ライブラリのインストール
 
-<img src='./image/step14.png'>
+`yarn install`
 
-<img src='./image/step15.png'>
+#### 4.2.2 ライブラリのインストール
 
-### 2.3 下記のコードを貼り付ける
+`yarn install`
 
-[techreis/tampermonkey/app.js](https://github.com/techreis/neomobi-aggregater/blob/master/src/tampermonkey/app.js)
+#### 4.2.3 エンドポイントの編集
 
-<img src='./image/step16.png'>
+4.1.7 で控えておいた web app URL を書きの場所に貼り付ける
+`/neomobi-aggregater/aggregateSender/src/const.ts`
+<img src='./image/edit_endpoint.png'>
 
-### 2.4 this.targetGASURL の値に先程控えておいた URL を貼り付ける
+#### 4.2.4 Chrome Extensions のビルド
 
-<img src='./image/step17.png'>
+`yarn build`
 
-## 3.実行
+#### 4.2.5 Chrome Extensions のインポート
 
-### 3.1 ネオモバにログインする
+1. [chrome://extensions/](chrome://extensions/) を開く
+2. デベロッパーモードを ON にする
+3. パッケージ化されていない拡張機能を読み込むを選択
+   <img src='./image/import1.png'>
 
-<img src='./image/step18.png'>
-
-### 3.2 メニュー → 口座管理・注文一覧・入出金を選択する
-
-<img src='./image/step19.png'>
-
-### 3.3 「スタート」ボタンを選択
-
-<img src='./image/step20.png'>
+4. 4.2.4 の結果作成された dist フォルダを選択する
+   <img src='./image/import2.png'>
+5. 下記画像のようになっていれば設定完了
+   <img src='./image/import3.png'>
