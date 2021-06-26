@@ -21,7 +21,7 @@ export const Sectors: SectorMaster = {
   },
   otherBanks: {
     name: "その他金融",
-    members: [8591, 8593],
+    members: [8591, 8593, 8584],
   },
   tradingCompany: {
     name: "総合商社",
@@ -29,7 +29,7 @@ export const Sectors: SectorMaster = {
   },
   service: {
     name: "サービス",
-    members: [2169, 2124, 6087, 4327, 2393],
+    members: [2169, 2124, 6087, 4327, 2393, 6073],
   },
   pharmaceuticals: {
     name: "医薬品",
@@ -45,7 +45,7 @@ export const Sectors: SectorMaster = {
   },
   telecommunications: {
     name: "情報・通信",
-    members: [9437, 9432, 9436, 9433],
+    members: [9437, 9432, 9436, 9433, 3817],
   },
   rubber: {
     name: "ゴム",
