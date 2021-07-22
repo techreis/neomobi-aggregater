@@ -1,6 +1,3 @@
-/**
- * Remove Banners and Click advertisement skip button when they appear
- */
 import { BrandItem, StockSummary, BrandItemExtra } from "./interface";
 import { Service, Sectors, NeoMobiDomain } from "./const";
 
@@ -21,7 +18,7 @@ const execute = async () => {
       header.style.backgroundColor = "#ffffcc";
       createStartBtn(menu);
     } else if (isDetailPage(location.href)) {
-      isDevMode && sendExtraInfo();
+      isDevMode() && sendExtraInfo();
     }
   };
   // event before close
@@ -160,7 +157,8 @@ const getNowYMD = () => {
 };
 
 const isDetailPage = (href: string) => {
-  const regex = /^https:\/\/trade.sbineomobile.co.jp\/domestic\/stockInfo\/brand\?securitiesCode=*/g;
+  const regex =
+    /^https:\/\/trade.sbineomobile.co.jp\/domestic\/stockInfo\/brand\?securitiesCode=*/g;
   return regex.test(href);
 };
 

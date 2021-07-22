@@ -26,13 +26,12 @@ export interface BrandItemExtra {
 
 export interface StockSummary {
   type: "summary";
-  purchaseCapacity: string;
-  totalValuation: string;
-  totalValuationGainOrLoss: string;
+  purchaseCapacity: string; // 現金残高
+  totalValuation: string; // 株式
+  totalValuationGainOrLoss: string; // 評価損益合計
 }
 
 export interface SectorMaster {
-  // 今回はstring
   [key: string]: {
     name: string;
     members: number[];
