@@ -1,16 +1,24 @@
 import { getSheetByName } from "./libs/spreadSheet";
 
 const OFFSET = 19;
-const TARGET_SHEET_NAME = "高配当日本株";
+const TARGET_SHEET_NAME = "日本株";
+
+const ReceiveDataType = {
+  Basic: "basic",
+  Extra: "extra",
+  Summary: "summary",
+} as const;
+type ReceiveDataType = typeof ReceiveDataType[keyof typeof ReceiveDataType];
 
 const doPost = (e) => {
+  console.log("doPost called");
   const sheet = getSheetByName(TARGET_SHEET_NAME);
   const params = JSON.parse(e.postData.getDataAsString());
-  if (params.type === "basic") {
+  if (params.type === ReceiveDataType.Basic) {
     setBasicInfo(sheet, params);
-  } else if (params.type === "extra") {
+  } else if (params.type === ReceiveDataType.Extra) {
     setExtraInfo(sheet, params);
-  } else if (params.type === "summary") {
+  } else if (params.type === ReceiveDataType.Summary) {
     setSummaryInfo(sheet, params);
   }
   console.log(e);
